@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3" id="app">
+    {% for post in posts %}
+      <div class="rounded overflow-hidden shadow-lg flex flex-col" id="post_id_{{post.id}}">
+
+        <img class="w-full" src="https://picsum.photos/400/200/" alt="{{ post.titulo }}">
+          <div class="px-6 py-4">
+            
+            <h3 class="font-bold text-lg mb-2 text-gray-600">{{ post.titulo }}</h3>
+
+            <p class="text-gray-500 text-sm mb-2">Publicado en: {{ post.fecha.strftime("%m/%d/%Y %H:%M") }}</p>
+            <p class="text-gray-700 text-base">{{ post.texto }}</p>
+          </div>
+
+          <div class="px-6 py-4 pb-2 flex justify-between mt-auto">
+
+            <a href="{{url_for('editar_post', post_id=post.id)}}" class="align-end inline-block bg-green-400 text-white rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2 hover:bg-green-600">Editar Post</a>
+
+            <button type="button" @click="deletePost({{ post.id }})" class="inline-block bg-red-400 text-white rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2 hover:bg-red-600" name="post_id">Borrar</button>
+
+        </div>
+          
+      </div>
+      
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script>
+
+    const url_delete ="{{ url_for('borrar') }}"
+  </script>
+  <script src="{{ url_for('static', filename="inicio.js") }}"></script>
+{% endblock %}

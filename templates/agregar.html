@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  
+  <div class="flex flex-col justify-center">
+    <h2 class="text-center mb-4 font-semibold text-gray-500 text-xl">Crear articulo</h2>
+
+     <form action="{{ url_for('crear_post')}}" method="post" class="w-1/2 mx-auto">
+      <div class="m-2">
+        <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="">Titulo</label>
+
+        <input type="text" name="titulo" placeholder="titulo" class="block text-gray-700 bg-gray-100 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 focus:bg-white focus:border-blue-500">
+      </div>
+      <div class="m-2">
+        <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="">Descripción</label>
+        <textarea id="" name="texto" cols="30" rows="10" class="block text-gray-700 bg-gray-100 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 focus:bg-white focus:border-blue-500"></textarea>
+      </div>
+      <div class="flex justify-end m-2">
+
+        <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Guardar</button>
+      </div>
+    
+  </form>
+
+  </div>
+  
+    
+{% endblock %}
